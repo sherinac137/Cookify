@@ -1,0 +1,63 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Recipe App</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" href="/admin-dashboard">
+            <i class="bi bi-house-door"></i> Recipe List
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/userlist">
+            <i class="bi bi-people"></i> User List
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/report">
+            <i class="bi bi-file-bar-graph"></i> Report
+          </a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="#" onclick="logoutAdmin()">
+            <i class="bi bi-box-arrow-right"></i> Logout
+          </a>
+        </li>
+      </ul>
+
+      <script>
+        function logoutAdmin() {
+          // Show a confirmation dialog
+          const confirmLogout = confirm("Are you sure you want to log out?");
+
+          if (confirmLogout) {
+            // Create a form element for submitting the logout request
+            const form = document.createElement("form");
+            form.method = "POST";
+            form.action = "/admin-logout";
+
+            // Append the form to the body and submit it
+            document.body.appendChild(form);
+            form.submit();
+          } else {
+            console.log("Logout canceled");
+          }
+        }
+      </script>
+    </div>
+  </div>
+</nav>

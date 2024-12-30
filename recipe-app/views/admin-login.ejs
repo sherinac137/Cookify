@@ -1,0 +1,56 @@
+<div
+  class="d-flex align-items-center justify-content-center vh-100 flex-column"
+>
+  <!-- Main Heading -->
+  <h1 class="display-4 text-center mb-5">Recipe App</h1>
+
+  <!-- Login Card -->
+  <div class="login-card w-50 p-5 border rounded shadow bg-white">
+    <h2 class="text-center mb-4">Admin Login</h2>
+    <form action="/admin-login" method="POST">
+      <!-- Username Field -->
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="username"
+          name="username"
+          placeholder="Username"
+          required
+        />
+        <label for="username">Username</label>
+      </div>
+
+      <!-- Password Field -->
+      <div class="form-floating mb-4">
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          name="password"
+          placeholder="Password"
+          required
+        />
+        <label for="password">Password</label>
+      </div>
+
+      <!-- Login Button -->
+      <button type="submit" class="btn btn-primary w-100">Login</button>
+
+      <% if (typeof error !== 'undefined' && error) { %>
+      <div
+        class="alert alert-danger alert-dismissible fade show mt-3"
+        role="alert"
+      >
+        <%= error %>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+      <% } %>
+    </form>
+  </div>
+</div>

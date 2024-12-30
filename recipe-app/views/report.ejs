@@ -1,0 +1,30 @@
+<!-- Main Heading -->
+<h1 class="display-2 mt-4">Most Viewed Recipes</h1>
+
+<!-- Recipe Table -->
+<div class="table-responsive mt-5">
+  <table class="table table-striped table-bordered text-center">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">User Email</th>
+        <th scope="col">Recipe</th>
+        <th scope="col">Views</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (recipes.length > 0) { %> <% recipes.forEach(recipe => { %>
+      <tr>
+        <td><%= recipe.user_id?.name || "Unknown" %></td>
+        <td><%= recipe.user_id?.email || "Unknown" %></td>
+        <td><%= recipe.title %></td>
+        <td><%= recipe.viewcount %> <i class="bi bi-eye"></i></td>
+      </tr>
+      <% }); %> <% } else { %>
+      <tr>
+        <td colspan="4">No recipes found.</td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
+</div>

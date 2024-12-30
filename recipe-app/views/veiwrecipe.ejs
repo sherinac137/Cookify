@@ -1,0 +1,77 @@
+<style>
+  .recipe-image {
+    object-fit: cover;
+  }
+</style>
+<div class="container my-5 mt-5">
+  <div class="row g-5 align-items-stretch">
+    <!-- Recipe Image -->
+    <div class="col-lg-6">
+      <div class="h-100">
+        <!-- Dynamically load the recipe image -->
+        <img
+          src="<%=`http://localhost:5000/${recipe.image}` || 'https://placehold.co/500x400'%>"
+          class="img-fluid h-100 w-100 rounded recipe-image"
+          alt="<%= recipe.title %> Image"
+        />
+      </div>
+    </div>
+
+    <!-- Recipe Details -->
+    <div class="col-lg-6">
+      <h1 class="display-4 mb-4"><%= recipe.title %></h1>
+      <h4 class="mb-4"><%= recipe.description %></h4>
+      <!-- Dynamically load cooking time and difficulty -->
+      <button class="btn btn-success mt-3 me-4">
+        <strong>Cooking Time:</strong> <%= recipe.cookingtime|| 'N/A' %>
+      </button>
+      <button class="btn btn-warning mt-3">
+        <strong>Difficulty Level:</strong> <%= recipe.difficulty || 'N/A' %>
+      </button>
+      <hr />
+
+      <h3>Ingredients</h3>
+      <!-- Dynamically list ingredients -->
+      <ul class="list-group">
+        <% recipe.ingredients.forEach(function(ingredient) { %>
+        <li class="list-group-item"><%= ingredient %></li>
+        <% }); %>
+      </ul>
+      <hr />
+
+      <h3>Steps</h3>
+      <!-- Dynamically list steps -->
+      <ol class="list-group list-group-numbered">
+        <% recipe.steps.forEach(function(step) { %>
+        <li class="list-group-item"><%= step %></li>
+        <% }); %>
+      </ol>
+
+      <!-- Buttons -->
+      <div class="text mt-4">
+        <!-- Delete Button -->
+        <button
+          class="btn btn-danger"
+          onclick="confirmDelete('<%= recipe._id %>')"
+        >
+          <i class="bi bi-trash"></i> Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function confirmDelete(recipeId) {
+    // Use a confirm dialog to get user confirmation
+    if (confirm("Are you sure you want to delete this recipe?")) {
+      // Redirect to the delete endpoint with POST method simulation
+      const form = document.createElement("form");
+      form.method = "POST";
+      form.action = `/deleterecipe/${recipeId}`;
+
+      // Append the form to the body and submit it
+      document.body.appendChild(form);
+      form.submit();
+    }
+  }
+</script>

@@ -1,0 +1,29 @@
+/* Login Modal Styles */
+.modal.show {
+  display: block !important; /* Force the modal to display */
+  z-index: 1050;
+  background-color: #14141480; /* Semi-transparent overlay */
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover; /* Ensure image is properly contained */
+}
+
+.btn-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1051;
+}
+/* Add this to login.css */
+.login-card-container {
+  min-height: 100vh; /* Take up full viewport height */
+  background-color: #242424; /* Optional background */
+  backdrop-filter: blur(10px);
+}
+.signup-card-container {
+  min-height: 100vh; /* Take up full viewport height */
+  background-color: #242424; /* Optional background */
+  backdrop-filter: blur(10px);
+}
